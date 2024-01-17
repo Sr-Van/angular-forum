@@ -56,4 +56,39 @@ nav div:nth-child(2) i {
   transform: translate(-50%, -50%);
 }
 
+@media (min-width: 425px) {
+  nav {
+    justify-content: space-between;
+  }
+
+  .user, .logo {
+    padding: 0 10px;
+  }
+}
+
+@media (min-width: 765px) {
+
+  nav div:nth-child(2) input{
+    width: 350px;
+  }
+
+  .user a{
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .logo h1 {
+    font-size: 24px;
+  }
+
+  nav div:nth-child(2) input{
+    width: 550px;
+  }
+
+  .user a{
+    font-size: 14px;
+  }
+}
+
 
