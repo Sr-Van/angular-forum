@@ -1,0 +1,55 @@
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  font-family: 'Lato', sans-serif;
+}
+
+.posts div h2 {
+  padding: 4px 8px;
+
+  font-size: 16px;
+}
+
+.posts .post {
+  display: flex;
+  flex-direction: column;
+
+  background-color: #EEE2DE;
+  border-radius: 10px;
+
+  max-width: 630px;
+
+  font-size: 12px;
+}
+
+.posts .post .post-header {
+  padding: 5px 10px;
+
+  font-weight: 700;
+  font-size: 12px;
+
+  border-bottom: solid 1px #bebebe;
+}
+
+.posts .post .post-body {
+  padding: 5px 8px;
+}
+
+.posts .post .post-footer  {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+
+  padding: 4px 8px;
+}
+
+.posts .post .post-footer div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+

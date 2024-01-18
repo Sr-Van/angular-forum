@@ -9,3 +9,13 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
+
+.container {
+  padding: 20px 30px;
+}
+
+@media (min-width: 765px) {
+  .container {
+    padding: 50px 70px;
+  }
+}
