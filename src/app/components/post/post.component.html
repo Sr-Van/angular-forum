@@ -1,0 +1,39 @@
+<div class="post_main container">
+  <div class="author">
+    <span>{{"@" + postArray[0].author }}</span>
+  </div>
+
+  <div class="post_header">
+    <h2>{{ postArray[0].header }}</h2>
+  </div>
+  <div class="post_body">
+    <p>
+      {{ postArray[0].post }}
+    </p>
+
+    <span>{{ postArray[0].date }}</span>
+  </div>
+
+  <div class="hashtags">
+    @for(hash of postArray[0].hashtags; track hash) {
+      <span class="hash">{{ hash }}</span>
+    }
+  </div>
+  <h3>Respostas:</h3>
+  <ul class="replys">
+    @for (reply of postArray[0].replys; track reply) {
+      <li>
+        <p>{{ reply.reply }}</p>
+        <span>{{ "@" + reply.author }}</span>
+        <span>{{ reply.date | date:'medium':'GMT'}}</span>
+      </li>
+    }
+  </ul>
+</div>
+
+<div class="new_reply container">
+  <label for="reply_input">Responda esta postagem:</label>
+  <textarea name="reply_input" id="" cols="30" rows="10"></textarea>
+
+  <button id="new_reply_btn">Responder</button>
+</div>

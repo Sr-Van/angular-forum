@@ -1,0 +1,126 @@
+
+
+.container {
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.post_main {
+  font-family: 'Lato', sans-serif;
+  position: relative;
+}
+
+.post_main::before {
+  content: "";
+  width: 1px;
+  height: 150%;
+  position: absolute;
+  top: -50px;
+  left: -10px;
+  z-index: -1;
+
+  background-color: rgb(190, 190, 190, 0.3);
+}
+
+.post_main::after {
+  content: "";
+  width: 1px;
+  height: 150%;
+  position: absolute;
+  top: -50px;
+  right: -10px;
+  z-index: -1;
+
+  background-color: rgb(190, 190, 190, 0.3);
+}
+
+.post_header {
+  text-align: start;
+}
+
+.post_body {
+  margin-bottom: 10px;
+}
+
+.post_body span {
+  font-size: 10px;
+}
+
+.hashtags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hashtags .hash {
+  background-color: rgb(217, 98, 98, 0.5);
+  cursor: pointer;
+
+  padding: .1rem .3rem;
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+.author span{
+  padding: .1rem .3rem;
+  font-size: 12px;
+}
+
+.replys {
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  background-color: rgb(246, 194, 194, 0.2);
+  border-radius: .3rem;
+  width: 95%;
+}
+
+.replys li{
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "left right";
+
+  border-bottom: 1px solid rgb(190, 190, 190, 0.3);
+  padding-bottom: 3px;
+}
+
+.replys li p {
+  grid-area: header;
+}
+
+.replys li span:nth-child(2) {
+  font-size: 12px;
+  grid-area: left;
+  padding: 3px;
+}
+
+.replys li span:nth-child(3) {
+  font-size: 10px;
+  grid-area: right;
+  padding: 3px;
+}
+
+.new_reply {
+  font-family: 'Lato', sans-serif;
+  width: auto;
+}
+
+.new_reply label {
+  margin-bottom: 1rem;
+}
+
+.new_reply textarea{
+  width: 97%;
+}
+
+.new_reply #new_reply_btn {
+  margin-top: 1rem;
+  padding: .6rem 1.2rem;
+
+  border: none;
+  color: #fff;
+  background-color: #820300;
+}
+
