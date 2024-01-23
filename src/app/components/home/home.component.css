@@ -37,6 +37,20 @@
   padding: 5px 8px;
 }
 
+.posts .post .post-body p {
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 3.6em;
+  line-height: 1.8em;
+
+
+  margin: 0;
+  padding: 0;
+}
+
 .posts .post .post-footer  {
   display: flex;
   flex-direction: row;

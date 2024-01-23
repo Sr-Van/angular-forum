@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -9,12 +10,18 @@ import { PostService } from 'src/app/services/post.service';
 export class HomeComponent {
 
   postService = inject(PostService)
+  router = inject(Router)
+
   posts: any = []
 
   ngOnInit() {
     this.posts = this.postService.getPost()
     console.log(this.posts);
 
+  }
+
+  goToPost(id: number) {
+    this.router.navigate([`/post/${id}`])
   }
 
 }
