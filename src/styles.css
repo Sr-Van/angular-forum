@@ -11,11 +11,27 @@ body {
 }
 
 .container {
-  padding: 20px 30px;
+  margin: 20px 30px;
+  padding: 0 10px;
+  display: grid;
+  place-items: center;
 }
 
 @media (min-width: 765px) {
   .container {
-    padding: 50px 70px;
+    margin: 50px 70px;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .container {
+    margin: 50px 200px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    margin: 50px 400px;
   }
 }
