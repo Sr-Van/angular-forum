@@ -1,0 +1,24 @@
+<main class="container">
+  <div class="new_post">
+    <form [formGroup]="form">
+      <h2>
+        Qual sua dúvida?
+      </h2>
+      <textarea formControlName="header" id="new_post_text" cols="30" rows="3" ></textarea>
+
+      <h3>Explique sua dúvida:</h3>
+      <textarea formControlName="post" cols="30" rows="10"></textarea>
+
+      <span>adicione Hashtags para atingir mais gente!(opicional)</span>
+      <textarea cols="30" rows="1" (keyup)="addHashtag($event)"></textarea>
+
+      <div class="hashtags">
+        @for(hash of hashtags; track hash) {
+          <span class="hash">{{ hash }}</span>
+        }
+      </div>
+      <button (click)="sendPost(form)" class="button">Enviar</button>
+    </form>
+  </div>
+
+</main>

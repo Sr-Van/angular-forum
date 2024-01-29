@@ -67,3 +67,12 @@
   gap: 5px;
 }
 
+.button_new_post {
+  display: flex;
+
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 630px;
+  margin-bottom: 1rem;
+}
+
