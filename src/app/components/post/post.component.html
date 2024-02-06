@@ -23,9 +23,18 @@
   <ul class="replys">
     @for (reply of postArray[0].replys; track reply) {
       <li>
-        <p>{{ reply.reply }}</p>
+        <p [innerHTML]="reply.reply | mention"></p>
         <span>{{ "@" + reply.author }}</span>
-        <span>{{ reply.date | date:'medium':'GMT'}}</span>
+        <div>
+          <span>{{ reply.date | date:'medium':'GMT'}}</span>
+          <a (click)="replyUser(reply.author, replyText)">Responder</a>
+        </div>
+      </li>
+    }
+
+    @empty {
+      <li>
+        <small>Seja o primeiro a responder essa discussão.</small>
       </li>
     }
   </ul>
@@ -33,7 +42,7 @@
 
 <div class="new_reply container">
   <label for="reply_input">Responda esta postagem:</label>
-  <textarea name="reply_input" id="" cols="30" rows="10"></textarea>
+  <textarea name="reply_input" id="" cols="30" rows="10" #replyText (keyup)="verifyText($event)"></textarea>
 
-  <button id="new_reply_btn">Responder</button>
+  <button id="new_reply_btn" (click)="addReply(replyText)">Responder</button>
 </div>

@@ -96,10 +96,13 @@
   padding: 3px;
 }
 
-.replys li span:nth-child(3) {
+.replys li div:nth-child(3) {
   font-size: 10px;
   grid-area: right;
   padding: 3px;
+
+  display: flex;
+  justify-content: space-between;
 }
 
 .new_reply {
