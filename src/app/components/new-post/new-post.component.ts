@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-new-post',
@@ -9,6 +11,9 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './new-post.component.css'
 })
 export class NewPostComponent {
+
+  postService = inject(PostService)
+  router = inject(Router)
 
   date = new Date()
   form: FormGroup;
@@ -20,11 +25,6 @@ export class NewPostComponent {
       header: new FormControl,
       post: new FormControl
     })
-  }
-
-
-  generateDate() {
-    return `${this.date.getDay()}/${this.date.getMonth() + 1}/${this.date.getFullYear()} ${this.date.getHours()}:${this.date.getMinutes()}`
   }
 
   generateId() {
@@ -56,16 +56,20 @@ export class NewPostComponent {
 
   sendPost(form: any) {
 
-    const obj = form.value
+    const obj = this.postService.generateObject("post")
     obj.id = this.generateId()
     obj.author = this.getUser()
-    obj.date = this.generateDate()
+    obj.header = form.value.header
+    obj.post = form.value.post
+    obj.date = this.postService.generateDate()
     obj.likes = 0
     obj.deslikes = 0
     obj.replys = []
     obj.hashtags = this.hashtags
 
-    console.log(obj);
+    this.postService.addNewPost(obj)
+    this.router.navigate([`/post/${obj.id}`])
+
     this.form.reset()
   }
 }
