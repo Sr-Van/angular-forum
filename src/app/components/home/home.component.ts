@@ -24,4 +24,9 @@ export class HomeComponent {
     this.router.navigate([`/post/${id}`])
   }
 
+  sortByMostLiked() {
+    this.posts = this.posts.sort((a:any, b: any) => {
+      return b.likes - a.likes
+    })
+  }
 }
