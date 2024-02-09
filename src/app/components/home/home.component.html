@@ -1,45 +1,50 @@
 <main class="container">
-  <div class="header_home">
-    <button (click)="sortByMostLiked()">
-      Mais curtidos
-    </button>
-    <button class="button" routerLink="new-post">Novo Post</button>
-  </div>
-  <div class="posts">
+  @if(isLoaded) {
+    <div class="header_home">
+      <button (click)="sortByMostLiked()">
+        Mais curtidos
+      </button>
+      <button class="button" routerLink="new-post">Novo Post</button>
+    </div>
+    <div class="posts">
 
-    @for(post of posts; track $index) {
-      <div class="post" (click)="goToPost(post.id)">
-        <div class="post-header">
-          <span>&#64;{{ post.author }}</span>
-        </div>
-
-        <div>
-          <h2>
-            {{ post.header }}
-          </h2>
-        </div>
-
-        <div class="post-body">
-          <p>{{ post.post }}</p>
-        </div>
-
-        <div class="post-footer">
-          <div>
-            <i class="fa-solid fa-thumbs-up"></i>
-            <span>{{ post.likes }}</span>
+      @for(post of posts; track $index) {
+        <div class="post" (click)="goToPost(post.id)">
+          <div class="post-header">
+            <span>&#64;{{ post.author }}</span>
           </div>
+
           <div>
-            <i class="fa-solid fa-thumbs-down"></i>
-            <span>{{ post.deslikes }}</span>
+            <h2>
+              {{ post.header }}
+            </h2>
           </div>
-          <div>
-            <i class="fa-solid fa-comment"></i>
-            <span>{{ post.replys.length }} respostas</span>
+
+          <div class="post-body">
+            <p>{{ post.post }}</p>
+          </div>
+
+          <div class="post-footer">
+            <div>
+              <i class="fa-solid fa-thumbs-up"></i>
+              <span>{{ post.likes }}</span>
+            </div>
+            <div>
+              <i class="fa-solid fa-thumbs-down"></i>
+              <span>{{ post.deslikes }}</span>
+            </div>
+            <div>
+              <i class="fa-solid fa-comment"></i>
+              <span>{{ post.replys.length }} respostas</span>
+            </div>
           </div>
         </div>
-      </div>
-    }
+      }
 
 
-  </div>
+    </div>
+  }
+  @else {
+    <app-loading></app-loading>
+  }
 </main>

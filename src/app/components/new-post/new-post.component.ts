@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-new-post',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, LoadingComponent],
   templateUrl: './new-post.component.html',
   styleUrl: './new-post.component.css'
 })
@@ -17,6 +18,7 @@ export class NewPostComponent {
 
   date = new Date()
   form: FormGroup;
+  isLoad: boolean = false
 
   hashtags: any = []
 
@@ -25,6 +27,10 @@ export class NewPostComponent {
       header: new FormControl,
       post: new FormControl
     })
+
+    setTimeout(() => {
+      this.isLoad = true
+    }, 1500)
   }
 
   generateId() {
@@ -68,7 +74,11 @@ export class NewPostComponent {
     obj.hashtags = this.hashtags
 
     this.postService.addNewPost(obj)
-    this.router.navigate([`/post/${obj.id}`])
+    this.isLoad = false
+    setTimeout(() => {
+      this.router.navigate([`/post/${obj.id}`])
+      this.isLoad = true
+    }, 1000);
 
     this.form.reset()
   }

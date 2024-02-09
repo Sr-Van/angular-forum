@@ -1,4 +1,7 @@
 <main class="container">
+  @if(isLoad) {
+
+
   <div class="new_post">
     <form [formGroup]="form">
       <h2>
@@ -20,5 +23,8 @@
       <button (click)="sendPost(form)" class="button">Enviar</button>
     </form>
   </div>
-
+  }
+  @else {
+    <app-loading></app-loading>
+  }
 </main>

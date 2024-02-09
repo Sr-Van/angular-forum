@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-header',
   template: `
     <nav>
-      <div class="logo">
-        <h1>Angulum</h1>
+      <div class="logo" >
+        <h1 routerLink="">Angulum</h1>
       </div>
       <div>
         <input type="text" id="search">

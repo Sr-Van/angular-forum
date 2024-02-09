@@ -1,54 +1,59 @@
-<div class="post_main container">
-  <div class="author">
-    <span>{{"@" + postArray[0].author }}</span>
+@if(isLoaded) {
+  <div class="post_main container">
+    <div class="author">
+      <span>{{"@" + postArray[0].author }}</span>
+    </div>
+
+    <div class="post_header">
+      <h2>{{ postArray[0].header }}</h2>
+    </div>
+    <div class="post_body">
+      <p>
+        {{ postArray[0].post }}
+      </p>
+
+      <span>{{ postArray[0].date }}</span>
+    </div>
+
+    <div class="post_aside">
+      <i class="fa-solid fa-caret-up" (click)="changeLike(postArray[0].id, 'like')"></i>
+      <span>{{ postArray[0].likes - postArray[0].deslikes }}</span>
+      <i class="fa-solid fa-caret-down" (click)="changeLike(postArray[0].id, 'deslike')"></i>
+    </div>
+
+    <div class="hashtags">
+      @for(hash of postArray[0].hashtags; track hash) {
+        <span class="hash">{{ hash }}</span>
+      }
+    </div>
+    <h3>Respostas:</h3>
+    <ul class="replys">
+      @for (reply of postArray[0].replys; track reply) {
+        <li>
+          <p [innerHTML]="reply.reply | mention"></p>
+          <span>{{ "@" + reply.author }}</span>
+          <div>
+            <span>{{ reply.date | date:'medium':'GMT'}}</span>
+            <a (click)="replyUser(reply.author, replyText)">Responder</a>
+          </div>
+        </li>
+      }
+
+      @empty {
+        <li>
+          <small>Seja o primeiro a responder essa discussão.</small>
+        </li>
+      }
+    </ul>
   </div>
 
-  <div class="post_header">
-    <h2>{{ postArray[0].header }}</h2>
+  <div class="new_reply container">
+    <label for="reply_input">Responda esta postagem:</label>
+    <textarea name="reply_input" id="" cols="30" rows="10" #replyText (keyup)="verifyText($event)"></textarea>
+
+    <button id="new_reply_btn" (click)="addReply(replyText)">Responder</button>
   </div>
-  <div class="post_body">
-    <p>
-      {{ postArray[0].post }}
-    </p>
-
-    <span>{{ postArray[0].date }}</span>
-  </div>
-
-  <div class="post_aside">
-    <i class="fa-solid fa-caret-up" (click)="changeLike(postArray[0].id, 'like')"></i>
-    <span>{{ postArray[0].likes - postArray[0].deslikes }}</span>
-    <i class="fa-solid fa-caret-down" (click)="changeLike(postArray[0].id, 'deslike')"></i>
-  </div>
-
-  <div class="hashtags">
-    @for(hash of postArray[0].hashtags; track hash) {
-      <span class="hash">{{ hash }}</span>
-    }
-  </div>
-  <h3>Respostas:</h3>
-  <ul class="replys">
-    @for (reply of postArray[0].replys; track reply) {
-      <li>
-        <p [innerHTML]="reply.reply | mention"></p>
-        <span>{{ "@" + reply.author }}</span>
-        <div>
-          <span>{{ reply.date | date:'medium':'GMT'}}</span>
-          <a (click)="replyUser(reply.author, replyText)">Responder</a>
-        </div>
-      </li>
-    }
-
-    @empty {
-      <li>
-        <small>Seja o primeiro a responder essa discussão.</small>
-      </li>
-    }
-  </ul>
-</div>
-
-<div class="new_reply container">
-  <label for="reply_input">Responda esta postagem:</label>
-  <textarea name="reply_input" id="" cols="30" rows="10" #replyText (keyup)="verifyText($event)"></textarea>
-
-  <button id="new_reply_btn" (click)="addReply(replyText)">Responder</button>
-</div>
+}
+@else {
+  <app-loading></app-loading>
+}

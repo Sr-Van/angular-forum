@@ -5,11 +5,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Posts } from 'src/app/interfaces/posts';
 import { PostService } from 'src/app/services/post.service';
 import { MentionPipe } from 'src/app/pipes/mention.pipe';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [CommonModule, MentionPipe],
+  imports: [CommonModule, MentionPipe, LoadingComponent],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css'
 })
@@ -19,11 +20,16 @@ export class PostComponent {
   postServ = inject(PostService)
   postId: any = 0
   postArray: Posts[] = []
+  isLoaded: boolean = false
 
   ngOnInit(){
     this.postId = this.activeRoute.snapshot.paramMap.get('id')
 
     this.postArray = this.postServ.getPost().filter((post: any) => post.id == this.postId)
+
+    setTimeout(() => {
+      this.isLoaded = true
+    }, 1500);
 
   }
 
