@@ -67,6 +67,11 @@
   font-size: 12px;
 }
 
+.post_aside {
+  display: flex;
+  flex-direction: column;
+}
+
 .replys {
   list-style: none;
   padding: 10px;

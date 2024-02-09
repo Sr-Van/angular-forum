@@ -27,6 +27,9 @@ export class PostComponent {
 
   }
 
+  changeLike(id: number, type: string) {
+    this.postServ.changeLike(id, type)
+  }
   /* Remove when backend enters */
   addReply(reply: any) {
     const obj = this.postServ.generateObject('reply')
