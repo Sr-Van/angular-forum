@@ -15,7 +15,7 @@
       <span>{{ postArray[0].date }}</span>
     </div>
 
-    <div class="post_aside">
+    <div class="like_buttons">
       <i class="fa-solid fa-caret-up" (click)="changeLike(postArray[0].id, 'like')"></i>
       <span>{{ postArray[0].likes - postArray[0].deslikes }}</span>
       <i class="fa-solid fa-caret-down" (click)="changeLike(postArray[0].id, 'deslike')"></i>
@@ -28,13 +28,22 @@
     </div>
     <h3>Respostas:</h3>
     <ul class="replys">
-      @for (reply of postArray[0].replys; track reply) {
+      @for (reply of replyArray; track reply) {
         <li>
           <p [innerHTML]="reply.reply | mention"></p>
           <span>{{ "@" + reply.author }}</span>
           <div>
             <span>{{ reply.date | date:'medium':'GMT'}}</span>
             <a (click)="replyUser(reply.author, replyText)">Responder</a>
+          </div>
+          <div class="like_buttons">
+            <i class="fa-solid fa-caret-up"
+            (click)="changeReplyLike(reply.id, 'like')"></i>
+            <span>
+              {{ reply.likes - reply.deslikes }}
+            </span>
+            <i class="fa-solid fa-caret-down"
+            (click)="changeReplyLike(reply.id, 'deslike')"></i>
           </div>
         </li>
       }

@@ -67,9 +67,12 @@
   font-size: 12px;
 }
 
-.post_aside {
+.like_buttons {
   display: flex;
   flex-direction: column;
+
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .replys {

@@ -1,3 +1,4 @@
+import { Replys } from './../../interfaces/replys';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 
@@ -20,12 +21,17 @@ export class PostComponent {
   postServ = inject(PostService)
   postId: any = 0
   postArray: Posts[] = []
+  replyArray: Replys[] = []
   isLoaded: boolean = false
 
   ngOnInit(){
     this.postId = this.activeRoute.snapshot.paramMap.get('id')
 
     this.postArray = this.postServ.getPost().filter((post: any) => post.id == this.postId)
+
+    this.replyArray = this.postArray[0].replys.sort((a:any, b: any) => {
+      return (b.likes - b.deslikes) - (a.likes - a.deslikes)
+    })
 
     setTimeout(() => {
       this.isLoaded = true
@@ -34,11 +40,24 @@ export class PostComponent {
   }
 
   changeLike(id: number, type: string) {
-    this.postServ.changeLike(id, type)
+    this.postServ.changeLike(this.postArray, id, type)
+  }
+  changeReplyLike(id: number, type: string) {
+    this.postServ.changeLike(this.postArray[0].replys , id, type)
+  }
+
+  generateId() {
+    let newId = ""
+    for(let i = 0; i < 10; i++){
+      const number = Math.floor(Math.random() * 10)
+      newId += number
+    }
+    return parseInt(newId)
   }
   /* Remove when backend enters */
   addReply(reply: any) {
     const obj = this.postServ.generateObject('reply')
+    obj.id = this.generateId()
     obj.reply = reply.value
     obj.author = "random"
     obj.date = this.postServ.generateDate()
