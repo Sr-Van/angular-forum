@@ -112,3 +112,36 @@
   transform: translateY(-30px);
 }
 
+.pags {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 20px;
+  list-style: none;
+
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+}
+
+.pags a {
+  cursor: pointer;
+
+  font-size: 14px;
+
+  border: none;
+  text-decoration: underline #820300;
+}
+
+
+@media(min-width: 425px) {
+  .posts .post {
+    min-width: 360px;
+  }
+}
+
+@media(min-width: 768px) {
+  .posts .post {
+    min-width: 628px;
+  }
+}
+

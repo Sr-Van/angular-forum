@@ -8,7 +8,7 @@
     </div>
     <div class="posts">
 
-      @for(post of posts; track $index) {
+      @for(post of actualPageArr; track $index) {
         <div class="post" (click)="goToPost(post.id)">
           <div class="post-header">
             <span>&#64;{{ post.author }}</span>
@@ -42,6 +42,18 @@
       }
 
 
+    </div>
+
+    <div class="pags">
+      <div>
+        <a (click)="previousPage()">Anterior</a>
+      </div>
+      <span>Pagina:</span>
+      <span>{{ actualPag }}... </span>
+      <span>de {{ pages }}</span>
+      <div>
+        <a (click)="nextPage()">Proxima</a>
+      </div>
     </div>
   }
   @else {
