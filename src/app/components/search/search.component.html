@@ -1,0 +1,26 @@
+
+<div class="container">
+  @if(isLoad) {
+
+    <div class="search_page">
+      <h2>
+        Itens encontrados:
+        {{ search }}
+      </h2>
+
+      <ul>
+        @for(post of postsSearchedArray; track $index) {
+          <li>
+            <span> {{ post.post }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  }
+  @else {
+    <app-loading></app-loading>
+
+  }
+</div>
+
+
