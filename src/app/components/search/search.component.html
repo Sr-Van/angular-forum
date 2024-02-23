@@ -3,18 +3,50 @@
   @if(isLoad) {
 
     <div class="search_page">
-      <h2>
-        Itens encontrados:
-        {{ search }}
-      </h2>
+      <h4>
+        Itens encontrados para:
+        <i>{{ search }}</i>
+      </h4>
 
-      <ul>
+      <div class="posts">
+
         @for(post of postsSearchedArray; track $index) {
-          <li>
-            <span> {{ post.post }}</span>
-          </li>
+          <div class="post" (click)="goToPost(post.id)">
+            <div class="post-header">
+              <span>&#64;{{ post.author }}</span>
+            </div>
+
+            <div>
+              <h2>
+                {{ post.header }}
+              </h2>
+            </div>
+
+            <div class="post-body">
+              <p>{{ post.post }}</p>
+            </div>
+
+            <div class="post-footer">
+              <div>
+                <i class="fa-solid fa-thumbs-up"></i>
+                <span>{{ post.likes }}</span>
+              </div>
+              <div>
+                <i class="fa-solid fa-thumbs-down"></i>
+                <span>{{ post.deslikes }}</span>
+              </div>
+              <div>
+                <i class="fa-solid fa-comment"></i>
+                <span>{{ post.replys.length }} respostas</span>
+              </div>
+            </div>
+          </div>
         }
-      </ul>
+        @empty{
+          <small>Nenhum item corresponde a essa pesquisa</small>
+        }
+
+      </div>
     </div>
   }
   @else {

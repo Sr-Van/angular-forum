@@ -51,4 +51,8 @@ export class SearchComponent {
     return this.activateRoute.snapshot.paramMap.get('search')
   }
 
+  goToPost(id: number) {
+    this.router.navigate([`/post/${id}`])
+  }
+
 }
