@@ -18,6 +18,7 @@ import { LoadingComponent } from '../loading/loading.component';
 export class PostComponent {
 
   activeRoute = inject(ActivatedRoute)
+  router = inject(Router)
   postServ = inject(PostService)
   postId: any = 0
   postArray: Posts[] = []
@@ -80,5 +81,10 @@ export class PostComponent {
       }
     })
 
+  }
+
+  goToHash(hash: string) {
+    this.router.navigate([`hashtags/${hash}`])
+    console.log(hash)
   }
 }

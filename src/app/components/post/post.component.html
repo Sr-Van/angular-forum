@@ -23,7 +23,7 @@
 
     <div class="hashtags">
       @for(hash of postArray[0].hashtags; track hash) {
-        <span class="hash">{{ hash }}</span>
+        <span class="hash" (click)="goToHash(hash)">{{ hash }}</span>
       }
     </div>
     <h3>Respostas:</h3>

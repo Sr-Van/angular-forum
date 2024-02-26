@@ -13,7 +13,7 @@
         @for(post of postsSearchedArray; track $index) {
           <div class="post" (click)="goToPost(post.id)">
             <div class="post-header">
-              <span>&#64;{{ post.author }}</span>
+              <span>{{ post.author }}</span>
             </div>
 
             <div>
