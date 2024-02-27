@@ -1,1 +1,54 @@
-<p>hashtags works!</p>
+
+<div class="container">
+  @if(isLoad) {
+
+    <div class="search_page">
+      <h4>
+        Itens encontrados na hashtag:
+        <i>{{ tag }}</i>
+      </h4>
+
+      <div class="posts">
+
+        @for(post of hashtagsArray; track $index) {
+          <div class="post" (click)="goToPost(post.id)">
+            <div class="post-header">
+              <span>{{ post.author }}</span>
+            </div>
+
+            <div>
+              <h2>
+                {{ post.header }}
+              </h2>
+            </div>
+
+            <div class="post-body">
+              <p>{{ post.post }}</p>
+            </div>
+
+            <div class="post-footer">
+              <div>
+                <i class="fa-solid fa-thumbs-up"></i>
+                <span>{{ post.likes }}</span>
+              </div>
+              <div>
+                <i class="fa-solid fa-thumbs-down"></i>
+                <span>{{ post.deslikes }}</span>
+              </div>
+              <div>
+                <i class="fa-solid fa-comment"></i>
+                <span>{{ post.replys.length }} respostas</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+  @else {
+    <app-loading></app-loading>
+
+  }
+</div>
+
+
