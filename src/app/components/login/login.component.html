@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>Vamos fazer Login</h2>
+  <!-- se for para fazer login -->
+  @if(!switchToSigin) {
+
+  <div class="login">
+    <form>
+      <div>
+        <label for="email">E-mail: </label>
+        <input type="text" id="email" />
+      </div>
+
+      <div>
+        <label for="password">Senha: </label>
+        <input type="password" id="password" />
+      </div>
+    </form>
+
+    <div class="google_login">
+      <a> Login with Google </a>
+      <i class="fa-brands fa-google"></i>
+    </div>
+
+    <div class="switch">
+      <span>Nao tem um cadastro?</span>
+      <button (click)="switchToSigin = !switchToSigin">Sign-in</button>
+    </div>
+  </div>
+  }
+  <!-- se for para fazer sign-in -->
+
+  @if(switchToSigin) {
+  <div class="signin">
+    <div class="switch">
+      <span>Ja tem um cadastro?</span>
+      <button (click)="switchToSigin = !switchToSigin">Log-in</button>
+    </div>
+  </div>
+  }
+</div>

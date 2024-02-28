@@ -13,7 +13,7 @@ import { EventService } from 'src/app/services/event.service';
         <input type="text" id="search" (keyup)="search(searchInput, $event)" #searchInput>
         <i class="fa-solid fa-magnifying-glass" (click)="search(searchInput, $event)"></i>
       </div>
-      <div class="user">
+      <div class="user" routerLink="login">
         <i class="fa-solid fa-user"></i>
         <a href="#">Log In</a>
       </div>
