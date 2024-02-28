@@ -6,24 +6,24 @@
   <div class="login">
     <form>
       <div>
-        <label for="email">E-mail: </label>
-        <input type="text" id="email" />
+        <label for="email_login">E-mail: </label>
+        <input type="text" id="email_login" class="pattern_form"/>
       </div>
 
       <div>
-        <label for="password">Senha: </label>
-        <input type="password" id="password" />
+        <label for="password_login">Senha: </label>
+        <input type="password" id="password_login" class="pattern_form"/>
       </div>
     </form>
 
-    <div class="google_login">
+    <div class="google_login pattern_form">
       <a> Login with Google </a>
       <i class="fa-brands fa-google"></i>
     </div>
 
     <div class="switch">
       <span>Nao tem um cadastro?</span>
-      <button (click)="switchToSigin = !switchToSigin">Sign-in</button>
+      <button (click)="switchToSigin = !switchToSigin" class="pattern_form">Sign-in</button>
     </div>
   </div>
   }
@@ -31,9 +31,30 @@
 
   @if(switchToSigin) {
   <div class="signin">
+    <form>
+      <div>
+        <label for="name_signin">Nome: </label>
+        <input type="text" id="name_signin" class="pattern_form"/>
+      </div>
+      <div>
+        <label for="email_signin">E-mail: </label>
+        <input type="text" id="email_signin" class="pattern_form"/>
+      </div>
+
+      <div>
+        <label for="password_signin">Senha: </label>
+        <input type="password" id="password_signin" class="pattern_form"/>
+      </div>
+    </form>
+
+    <div class="google_signin pattern_form">
+      <a> Signin with Google </a>
+      <i class="fa-brands fa-google"></i>
+    </div>
+
     <div class="switch">
       <span>Ja tem um cadastro?</span>
-      <button (click)="switchToSigin = !switchToSigin">Log-in</button>
+      <button (click)="switchToSigin = !switchToSigin" class="pattern_form">Log-in</button>
     </div>
   </div>
   }
