@@ -56,6 +56,10 @@ nav div:nth-child(2) i {
   transform: translate(-50%, -50%);
 }
 
+[routerLink] {
+  cursor: pointer;
+}
+
 @media (min-width: 425px) {
   nav {
     justify-content: space-between;

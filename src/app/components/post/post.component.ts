@@ -85,6 +85,5 @@ export class PostComponent {
 
   goToHash(hash: string) {
     this.router.navigate([`hashtags/${hash}`])
-    console.log(hash)
   }
 }

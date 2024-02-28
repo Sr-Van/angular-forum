@@ -15,7 +15,7 @@ import { EventService } from 'src/app/services/event.service';
       </div>
       <div class="user" routerLink="login">
         <i class="fa-solid fa-user"></i>
-        <a href="#">Log In</a>
+        <a>Log In</a>
       </div>
     </nav>
   `,

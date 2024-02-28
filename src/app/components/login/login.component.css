@@ -66,14 +66,14 @@
 }
 
 @media (min-width: 768px) {
-  .login form {
+  .login form, .signin form {
     width: 50%;
   }
   .switch {
     width: 50%;
   }
 
-  .login .google_login {
+  .login .google_login, .signin .google_signin {
     width: 50%;
   }
 }
