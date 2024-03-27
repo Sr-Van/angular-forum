@@ -7,6 +7,7 @@ import { Posts } from 'src/app/interfaces/posts';
 import { PostService } from 'src/app/services/post.service';
 import { MentionPipe } from 'src/app/pipes/mention.pipe';
 import { LoadingComponent } from '../loading/loading.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-post',
@@ -20,31 +21,34 @@ export class PostComponent {
   activeRoute = inject(ActivatedRoute)
   router = inject(Router)
   postServ = inject(PostService)
+
   postId: any = 0
-  postArray: Posts[] = []
+  post: Posts
   replyArray: Replys[] = []
   isLoaded: boolean = false
+  apiSubs: Subscription
 
   ngOnInit(){
     this.postId = this.activeRoute.snapshot.paramMap.get('id')
 
-    this.postArray = this.postServ.getPost().filter((post: any) => post.id == this.postId)
-
-    this.replyArray = this.postArray[0].replys.sort((a:any, b: any) => {
-      return (b.likes - b.deslikes) - (a.likes - a.deslikes)
+    this.apiSubs = this.postServ.getPostApi(this.postId)?.subscribe(data => {
+      this.post = data
+      this.replyArray = this.post.replys.sort((a:any, b: any) => {
+        return (b.likes - b.deslikes) - (a.likes - a.deslikes)
+      })
+      setTimeout(() => {
+        this.isLoaded = true
+      }, 1500);
     })
 
-    setTimeout(() => {
-      this.isLoaded = true
-    }, 1500);
 
   }
 
   changeLike(id: number, type: string) {
-    this.postServ.changeLike(this.postArray, id, type)
+    this.postServ.changeLike(this.post, id, type)
   }
   changeReplyLike(id: number, type: string) {
-    this.postServ.changeLike(this.postArray[0].replys , id, type)
+    this.postServ.changeLike(this.post.replys , id, type)
   }
 
   generateId() {

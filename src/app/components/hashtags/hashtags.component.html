@@ -13,7 +13,7 @@
         @for(post of hashtagsArray; track $index) {
           <div class="post" (click)="goToPost(post.id)">
             <div class="post-header">
-              <span>{{ post.author }}</span>
+              <span>{{ post.user }}</span>
             </div>
 
             <div>

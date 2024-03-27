@@ -1,28 +1,28 @@
 @if(isLoaded) {
   <div class="post_main container">
     <div class="author">
-      <span>{{"@" + postArray[0].author }}</span>
+      <span>{{"@" + post.user }}</span>
     </div>
 
     <div class="post_header">
-      <h2>{{ postArray[0].header }}</h2>
+      <h2>{{ post.header }}</h2>
     </div>
     <div class="post_body">
       <p>
-        {{ postArray[0].post }}
+        {{ post.post }}
       </p>
 
-      <span>{{ postArray[0].date }}</span>
+      <span>{{ post.date }}</span>
     </div>
 
     <div class="like_buttons">
-      <i class="fa-solid fa-caret-up" (click)="changeLike(postArray[0].id, 'like')"></i>
-      <span>{{ postArray[0].likes - postArray[0].deslikes }}</span>
-      <i class="fa-solid fa-caret-down" (click)="changeLike(postArray[0].id, 'deslike')"></i>
+      <i class="fa-solid fa-caret-up" (click)="changeLike(post.id, 'like')"></i>
+      <span>{{ post.likes - post.deslikes }}</span>
+      <i class="fa-solid fa-caret-down" (click)="changeLike(post.id, 'deslike')"></i>
     </div>
 
     <div class="hashtags">
-      @for(hash of postArray[0].hashtags; track hash) {
+      @for(hash of post.hashtags; track hash) {
         <span class="hash" (click)="goToHash(hash)">{{ hash }}</span>
       }
     </div>
@@ -31,10 +31,10 @@
       @for (reply of replyArray; track reply) {
         <li>
           <p [innerHTML]="reply.reply | mention"></p>
-          <span>{{ "@" + reply.author }}</span>
+          <span>{{ "@" + reply.user }}</span>
           <div>
             <span>{{ reply.date | date:'medium':'GMT'}}</span>
-            <a (click)="replyUser(reply.author, replyText)">Responder</a>
+            <a (click)="replyUser(reply.user, replyText)">Responder</a>
           </div>
           <div class="like_buttons">
             <i class="fa-solid fa-caret-up"
