@@ -1,7 +1,7 @@
 export interface Replys {
-  id: number
+  id: number,
   reply: string
-  author: string
+  user: string
   date: string
   likes: number
   deslikes: number

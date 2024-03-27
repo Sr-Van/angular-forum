@@ -2,7 +2,7 @@ import { Replys } from "./replys"
 
 export interface Posts {
   id: number
-  author: string
+  user: string
   header: string,
   post: string
   date: string
