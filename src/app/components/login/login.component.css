@@ -34,11 +34,9 @@
 
   justify-content: center;
   align-items: center;
-  gap: .5rem;
 
-  border: 1px solid #000;
-  font-size: 12px;
   cursor: pointer;
+  border: none;
 }
 
 .pattern_form {
